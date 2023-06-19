@@ -1,19 +1,11 @@
-import { useEffect, useState } from 'react';
 import { HeroInformation } from './HeroInformation';
-import withLoading from './withLoading';
-import { fetchHero, HeroType } from './heroes';
+import heroWithLoadding from './withLoading';
 
-const HeroInformationWithLoading = withLoading(HeroInformation);
+const HeroInformationWithLoading = heroWithLoadding(HeroInformation);
+
 const Application = () => {
-  const [hero, setHero] = useState<HeroType>(null);
-  useEffect(() => {
-    fetchHero().then((hero: HeroType) => {
-      setHero(hero);
-    })
-  }, []);
-  return (
-    hero && <HeroInformationWithLoading hero={hero}/>
-  )
+
+  return <HeroInformationWithLoading disabled isLoggedIn/>
 };
 
 export default Application;
